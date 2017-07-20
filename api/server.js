@@ -1,6 +1,9 @@
 const express = require('express')  
 const port = 8080
 const app = express()
+var cors = require('cors')
+
+app.use(cors())
 
 var mongo = require('mongoskin');
 var index = require('./data/libs/index.json');
@@ -10,10 +13,15 @@ var db = mongo.db(process.env.MONGODB_PORT_27017_TCP_ADDR + ':' + process.env.MO
 
 app.get('/random',(request, response) => {  
   console.log(request.url)
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-  With, Content-Type, Accept");
+
   response.send(random)
 })
 app.get('/',(request, response) => {  
   console.log(request.url)
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-  With, Content-Type, Accept");
   response.send(index)
 })
 
