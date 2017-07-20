@@ -18,14 +18,14 @@ export class SentenceFormComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.sentenceService
-        .getSentence(params['id'])
+        .getSentence(params['_id'])
         .subscribe(sentence => this.sentence = sentence);
     });
   }
 
   onSubmit(sentenceForm, event) {
     event.preventDefault();
-    this.router.navigate([this.sentence.id], {
+    this.router.navigate([this.sentence._id], {
       queryParams: this.model
     });
   }

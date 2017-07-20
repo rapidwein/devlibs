@@ -17,7 +17,7 @@ export class SentenceDisplayComponent implements OnInit {
     this.route.queryParams.subscribe(queryParams => {
       this.route.params.subscribe(params => {
         this.sentenceService
-          .getSentence(params['id'])
+          .getSentence(params['_id'])
           .subscribe(sentence => {
             this.sentence = this.sentenceService
               .interpolate(sentence, queryParams);
