@@ -4,7 +4,7 @@
   <form (submit)="onSubmit(sentenceForm, $event)" #sentenceForm>
     <div class="row">
       <div class="col-4">
-
+	<b>{{sentence.title}}</b><p></p>
         <div *ngFor="let word of sentence.words; let i = index" class="form-group">
           <input type="text"
                  class="form-control"
