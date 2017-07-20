@@ -25,6 +25,12 @@ export class SentenceService {
       return null;
     });
   }
+  getRandomSentence() {
+    return this.http.get('http://localhost:8080/random')
+      .map(response => response.json())
+      .map(sentence => this.transformSentences([sentence]))
+      .map(sentences => sentences[0]);
+  }
 
   transformSentences(originalSentences) {
     return originalSentences.map(sentence => {
