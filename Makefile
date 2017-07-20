@@ -1,4 +1,10 @@
 #########
+#  NET  #
+#########
+network:
+	docker network create dockernet
+
+#########
 #  API  #
 #########
 
@@ -7,8 +13,8 @@ API_IMAGE_NAME=devlibs-api
 api-build:
 	docker build -t $(API_IMAGE_NAME):latest $(PWD)/api
 
-api-run: api-build
-	docker run --rm -v $(PWD)/api/data:/var/www/api/v1 -p 8080:80 $(API_IMAGE_NAME)
+api-run: api-build network
+	docker run --rm -p 8080:8080 --network dockernet $(API_IMAGE_NAME)
 
 
 ############
