@@ -28,7 +28,7 @@ export class SentenceService {
 
   transformSentences(originalSentences) {
     return originalSentences.map(sentence => {
-      sentence.words = sentence.text
+      sentence.words = sentence.sentence
         .match(/{{.+?}}/g)
         .map(word => word.replace(/[{}]/g, ''));
 
@@ -38,7 +38,7 @@ export class SentenceService {
 
   interpolate(sentence, queryParams) {
     for (let key in queryParams) {
-      sentence.text = sentence.text.replace(/{{.+?}}/, queryParams[key]);
+      sentence.sentence = sentence.sentence.replace(/{{.+?}}/, queryParams[key]);
     }
 
     return sentence;

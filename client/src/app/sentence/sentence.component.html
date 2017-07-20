@@ -2,7 +2,7 @@
 
 <ul *ngFor="let sentence of sentences">
   <li>
-    {{ sentence.text }}<br>
+    {{ sentence.title }}<br>
     <a [routerLink]="[sentence.id, 'form']">Form</a>
   </li>
 </ul>

@@ -9,20 +9,25 @@ var mongo = require('mongoskin');
 var index = require('./data/libs/index.json');
 var random = require('./data/libs/random.json');
 
-var db = mongo.db(process.env.MONGODB_PORT_27017_TCP_ADDR + ':' + process.env.MONGODB_PORT_27017_TCP_PORT + '/devlibs');
-
+console.log(process.env);
+var db = mongo.db("mongodb://db:27017/devlibs");
 app.get('/random',(request, response) => {  
   console.log(request.url)
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-  With, Content-Type, Accept");
-
-  response.send(random)
+  db.collection("sentences").find().toArray(function(err, result) {
+    if(err) throw err; 
+  response.send(result)
+  })
 })
 app.get('/',(request, response) => {  
   console.log(request.url)
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-  With, Content-Type, Accept");
-  response.send(index)
+  db.collection("sentences").find().toArray(function(err, result) {
+    if(err) throw err; 
+  response.send(result)
+  })
 })
 
 app.listen(port, (err) => {  

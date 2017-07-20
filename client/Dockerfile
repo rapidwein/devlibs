@@ -41,8 +41,8 @@ RUN apt-get update -y && \
     \
     # Upgrade npm using Yarn
     yarn global add npm@5
-
-COPY . ${APP_DIR}
+COPY package.json ${APP_DIR}/package.json
 RUN npm install --allow-root
+COPY . ${APP_DIR}
 
 CMD ["npm", "run-script"]
