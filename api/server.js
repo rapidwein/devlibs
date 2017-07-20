@@ -2,8 +2,10 @@ const express = require('express')
 const port = 8080
 const app = express()
 var cors = require('cors')
+var bodyParser = require('body-parser')
 
 app.use(cors())
+app.use(bodyParser.json())
 
 var mongo = require('mongoskin');
 var index = require('./data/libs/index.json');
@@ -28,6 +30,17 @@ app.get('/',(request, response) => {
     if(err) throw err; 
     response.send(result);
   });
+})
+app.post('/sentence', (request, response) => {
+  console.log(request.url)
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-  With, Content-Type, Accept");
+  if (request.body.hasOwnProperty('title') && request.body.hasOwnProperty('text')) {
+    db.collection("sentences").insert({title: request.body.title, text: request.body.text})
+    response.status(200).send();
+  } else {
+    response.status(400).send('expected both title and text fields');
+  }
 })
 
 app.listen(port, (err) => {  
