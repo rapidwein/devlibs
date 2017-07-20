@@ -6,8 +6,8 @@ import { SentenceDisplayComponent } from './sentence-display/sentence-display.co
 
 const routes: Routes = [
   { path: '', component: SentenceComponent },
-  { path: ':id', component: SentenceDisplayComponent },
-  { path: ':id/form', component: SentenceFormComponent }
+  { path: ':_id', component: SentenceDisplayComponent },
+  { path: ':_id/form', component: SentenceFormComponent }
 ];
 
 @NgModule({

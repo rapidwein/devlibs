@@ -15,10 +15,10 @@ export class SentenceService {
       .map(sentences => this.transformSentences(sentences));
   }
 
-  getSentence(id: string) {
+  getSentence(_id: string) {
     return this.getSentences().map(sentences => {
       for (let sentence of sentences) {
-        if (sentence.id === id) {
+        if (sentence._id === _id) {
           return sentence;
         }
       }
