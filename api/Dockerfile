@@ -1,8 +1,9 @@
-FROM nginx:1.13-alpine
+FROM node:latest
 
-RUN rm /etc/nginx/conf.d/default.conf
+WORKDIR /app
+COPY server.js /app/index.js
+COPY data /app/index.js/data
 
-RUN mkdir -p /var/www/api/v1
-WORKDIR /var/www/
-COPY ./data /var/www/api/v1
-COPY ./conf/nginx-devlibs.conf /etc/nginx/conf.d/
+EXPOSE 8080
+
+CMD node server.js
