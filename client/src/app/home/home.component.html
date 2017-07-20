@@ -1,5 +1,5 @@
 <p>
-  <a [routerLink]="[sentences[random_num]._id, 'form']">Play Devlibs</a>
+  <a [routerLink]="[(sentences.length > 0) ? sentences[random_num]._id : '0', 'form']">Play Devlibs</a>
 </p>
 <p>
   <a [routerLink]="['sentences']">Show Sentences</a>
