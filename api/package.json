@@ -1,0 +1,15 @@
+{
+  "name": "devlibs",
+  "version": "1.0.0",
+  "description": "Devlibs on Node.js on Docker",
+  "author": "Acceptable Thing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongodb": "^2.2.30",
+    "mongoskin": "^2.1.0"
+  }
+}

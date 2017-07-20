@@ -10,7 +10,7 @@ export class SentenceService {
   constructor(private http: Http) { }
 
   getSentences() {
-    return this.http.get('http://localhost:8080/api/v1/libs/')
+    return this.http.get('http://localhost:8080/')
       .map(response => response.json())
       .map(sentences => this.transformSentences(sentences));
   }

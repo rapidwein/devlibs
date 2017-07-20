@@ -1,8 +1,14 @@
-FROM nginx:1.13-alpine
+FROM node:boron
 
-RUN rm /etc/nginx/conf.d/default.conf
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-RUN mkdir -p /var/www/api/v1
-WORKDIR /var/www/
-COPY ./data /var/www/api/v1
-COPY ./conf/nginx-devlibs.conf /etc/nginx/conf.d/
+COPY package.json /usr/src/app/
+RUN npm install
+
+COPY . /usr/src/app
+
+EXPOSE 8080
+
+CMD [ "npm", "start" ]
+
