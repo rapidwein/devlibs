@@ -17,8 +17,8 @@ app.get('/random',(request, response) => {
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-  With, Content-Type, Accept");
   db.collection("sentences").find().toArray(function(err, result) {
     if(err) throw err; 
-  response.send(result)
-  })
+    response.send(result[Math.floor(Math.random()*result.length)]);
+  });
 })
 app.get('/',(request, response) => {  
   console.log(request.url)
@@ -26,8 +26,8 @@ app.get('/',(request, response) => {
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-  With, Content-Type, Accept");
   db.collection("sentences").find().toArray(function(err, result) {
     if(err) throw err; 
-  response.send(result)
-  })
+    response.send(result);
+  });
 })
 
 app.listen(port, (err) => {  
